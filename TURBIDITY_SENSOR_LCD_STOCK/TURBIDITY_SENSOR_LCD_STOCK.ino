@@ -1,7 +1,7 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>    //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 LiquidCrystal_I2C lcd(0x27, 16, 2);
- 
+#define buzzer 7
 int sensorPin = A0;                                                                                                                                       
 float volt;
 float ntu;
@@ -63,7 +63,16 @@ void loop()
     lcd.print(" NTU");
     delay(1000);
     }
-   
+   if(ntu>1800){ 
+  for(int j=0; j<=2;j++){
+
+    tone(buzzer, 1000);
+    delay(200);
+    noTone(buzzer);
+    delay(100);
+
+  }
+};
     }
     
 

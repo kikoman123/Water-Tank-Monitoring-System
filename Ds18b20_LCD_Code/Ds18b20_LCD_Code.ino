@@ -11,10 +11,10 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 void setup(void)
 {
-  lcd.init();
+  
   Serial.begin(9600);
   sensors.begin();  
-  lcd.begin(16,2);
+  lcd.begin();
   lcd.backlight();
 }
 void loop(void)
@@ -23,8 +23,8 @@ void loop(void)
   lcd.setCursor(0,0);
   lcd.print("TEMP: ");
   lcd.print(sensors.getTempCByIndex(0));
-  lcd.print((char)223);
-  lcd.print("C");
+
+  lcd.print(" C");
   delay(1000);
   lcd.clear();
 }
